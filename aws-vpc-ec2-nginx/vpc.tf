@@ -1,20 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "5.93.0"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "3.7.1"
-    }
-  }
-}
-
-provider "aws" {
-  region = var.region
-}
-
 resource "aws_vpc" "my_vpc" {
   cidr_block = "10.0.0.0/16"
   tags = {
@@ -63,6 +46,3 @@ resource "aws_route_table_association" "my_route_table_association" {
   route_table_id = aws_route_table.my_route_table.id
   
 }
-
-
-
