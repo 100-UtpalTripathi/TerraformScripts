@@ -21,6 +21,9 @@ locals {
   public_subnet = {
     for key, config in var.subnet-config : key => config if config.public
   }
+  private_subnet = {
+    for key, config in var.subnet-config : key => config if !config.public
+  }
 }
 
 resource "aws_internet_gateway" "main" {
